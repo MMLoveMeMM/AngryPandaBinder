@@ -23,18 +23,18 @@ public class MyService extends Service {
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
         // throw new UnsupportedOperationException("Not yet implemented");
-        Log.d(TAG,"connect remote ...");
+        Log.d(TAG, "connect remote ...");
         /*
         * 打印binder的地址,与客户端那边进行比较
         * */
-        Log.d(TAG,"binder obj : " + binder);
+        Log.d(TAG, "binder obj : " + binder);
         /*
         * 这个binder对象是返回给客户端使用的
         * */
         return binder;
     }
 
-    public IBinderInterface.Stub binder=new IBinderInterface.Stub() {
+    public IBinderInterface.Stub binder = new IBinderInterface.Stub() {
         @Override
         public int addSum(int a, int b) throws RemoteException {
             /*
@@ -54,7 +54,7 @@ public class MyService extends Service {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            return a+b;
+            return a + b;
         }
 
         @Override
@@ -62,20 +62,21 @@ public class MyService extends Service {
             /*
             * 必须是跨进程,这里才会调用,如果不是跨进程,即使用aidl,这里也不需要(也不会)调用
             * */
-            Log.d(TAG,"onTransact code : " + code);
+            Log.d(TAG, "onTransact code : " + code);
 
-            switch (code){
-                case TRANSACTION_addSum:{
+            switch (code) {
+                case TRANSACTION_addSum: {
                     /*
                     * TRANSACTION_addSum 其实是从IBinderInterface.aidl自动build生成的TRANSACTION_addSum.java中
                     * 获取的.其中DESCRIPTOR也是;
+                    * 另外一个INTERFACE_TRANSACTION : 这个是对应binder注册到驱动binder的code标记
                     * */
                     data.enforceInterface(DESCRIPTOR);// 没有这一句,下面的data值是非确定性的
                     int arg0 = data.readInt();
                     int arg1 = data.readInt();
                     // 相对的方法:attachInterface,它主要是将DESCRIPTOR和对应的Binder(或者其子类)生产一张map表放在binder里面
-                    IBinderInterface inf = (IBinderInterface)this.queryLocalInterface(DESCRIPTOR);
-                    int result = inf.addSum(arg0,arg1);
+                    IBinderInterface inf = (IBinderInterface) this.queryLocalInterface(DESCRIPTOR);
+                    int result = inf.addSum(arg0, arg1);
                     reply.writeNoException();
                     reply.writeInt(result);
 

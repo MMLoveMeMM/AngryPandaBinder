@@ -15,8 +15,8 @@ import cn.pumpkin.angrypandabinder.aidl.IBinderInterface;
 /**
  * @author: zhibao.Liu
  * @version:
- * @date: 2018/5/15 09:09
- * @des:主要用于对接播放业务层的接口
+ * @date: 2018/10/15 09:09
+ * @des:
  * @see {@link }
  */
 
