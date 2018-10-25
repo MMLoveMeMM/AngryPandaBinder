@@ -3,8 +3,8 @@ LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES:= \
-    BnHelloService.cpp \
-    BpHelloService.cpp \
+    BnTestService.cpp \
+    BpTestService.cpp \
     test_server.cpp
 
 LOCAL_SHARED_LIBRARIES := \
@@ -21,7 +21,7 @@ include $(BUILD_EXECUTABLE)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES:= \
-    BpHelloService.cpp \
+    BpTestService.cpp \
     test_client.cpp
 
 LOCAL_SHARED_LIBRARIES := \
