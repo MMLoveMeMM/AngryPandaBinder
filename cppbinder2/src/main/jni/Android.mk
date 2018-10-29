@@ -5,7 +5,7 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= \
     BnTestService.cpp \
     BpTestService.cpp \
-    TestServer.cpp
+    main_testserver.cpp
 
 LOCAL_SHARED_LIBRARIES := \
     libcutils \
@@ -22,7 +22,7 @@ include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES:= \
     BpTestService.cpp \
-    TestClient.cpp
+    main_testclient.cpp
 
 LOCAL_SHARED_LIBRARIES := \
     libcutils \

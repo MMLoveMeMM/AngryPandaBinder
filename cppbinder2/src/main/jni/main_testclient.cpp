@@ -25,6 +25,9 @@ int main(int argc,char** argv){
     int result = proxy->addSum(11,22);
     printf("client calculate sum : 11+22 = %d",rersult)
 
+    // 这边客户端可以不需要,获得结果以后就可以结束了
+    // ProcessState::self()->startThreadPool();
+    // IPCThreadState::self->joinThreadPool();
     return 0;
 
 }
